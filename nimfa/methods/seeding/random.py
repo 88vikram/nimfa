@@ -20,7 +20,7 @@ class Random(object):
     def __init__(self):
         self.name = "random"
 
-    def initialize(self, V, rank, options):
+    def initialize(self, V, rank, options, random_seed = 42):
         """
         Return initialized basis and mixture matrix (and additional factors if
         specified in :param:`Sn`, n = 1, 2, ..., k).
@@ -51,7 +51,7 @@ class Random(object):
             gen = self.gen_sparse
         else:
             self.max = V.max()
-            self.prng = np.random.RandomState()
+            self.prng = np.random.RandomState(random_seed)
             gen = self.gen_dense
         self.W = gen(V.shape[0], self.rank)
         self.H = gen(self.rank, V.shape[1])

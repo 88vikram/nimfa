@@ -36,7 +36,7 @@ class Nmf_ns(Nmf):
     parameter theta which can be specified as algorithm specific model option. For detailed
     explanation of the NSNMF algorithm see :mod:`methods.factorization.nsnmf`.
     """
-    def __init__(self, params):
+    def __init__(self, random_seeds, params):
         """
         Construct factorization model that manages nonsmooth NMF models.
         
@@ -46,6 +46,7 @@ class Nmf_ns(Nmf):
            factorization method.
         :type params: `dict`
         """
+        self.random_seeds = random_seeds
         self.model_name = "ns"
         self.V1 = None
         self.H1 = None
